@@ -1,6 +1,6 @@
 const youtubeData = [
   {
-    section: "JavaScript Tutorials",
+    section: "JavaScript Tutorials by freeCodeCamp",
     channel: "freeCodeCamp.org",
     items: [
       {
