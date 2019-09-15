@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import youtubeData from "./data";
 
 import "./App.css";
@@ -35,10 +35,21 @@ const CardList = ({ list }) => {
   );
 };
 
-function App() {
+const App = () => {
+  const [videos, setVideos] = useState([]);
+
+  // Load this effect on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVideos(youtubeData);
+    }, 3000);
+    // Cancel the timer while unmounting
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
-      {youtubeData.map((list, index) => {
+      {videos.map((list, index) => {
         return (
           <section key={index}>
             <h2 className="section-title">{list.section}</h2>
@@ -49,6 +60,6 @@ function App() {
       })}
     </div>
   );
-}
+};
 
 export default App;
